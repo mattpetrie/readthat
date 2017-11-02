@@ -1,0 +1,10 @@
+{
+  "name": "readthat-server",
+  "version": "1.0.0",
+  "description": "The readthat server application",
+  "main": "index.js",
+  "repository": "git@github.com:mattpetrie/readthat.git",
+  "author": "Leathan Teal & Matt Petrie",
+  "license": "MIT",
+  "private": false
+}
