@@ -2,7 +2,6 @@ const express = require('express');
 const logger = require('morgan');
 const cors = require('cors');
 const bodyParser = require('body-parser');
-const cors = require('cors');
 
 // Set up the express app
 const app = express();

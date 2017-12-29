@@ -11,7 +11,7 @@ const authCheck = jwt({
     }),
     // This is the identifier we set when we created the API
     audience: 'readthat',
-    issuer: 'readthat.auth0.com',
+    issuer: 'https://readthat.auth0.com/',
     algorithms: ['RS256']
 });
 
