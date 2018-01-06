@@ -1,4 +1,5 @@
 import React from 'react';
+import { addTodoToServer } from '../api/todos';
 
 const AddTodo = ({
   onAddTodo,
@@ -13,7 +14,10 @@ const AddTodo = ({
         if (!input.value.trim()) {
           return;
         }
-        onAddTodo(input.value);
+        addTodoToServer(input.value).then(res => {
+          console.log(res);
+          onAddTodo(res.title, res.id);
+        });
         input.value = '';
       }}
     >
