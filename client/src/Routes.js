@@ -1,6 +1,6 @@
 import React from 'react';
 import { Switch, Route } from 'react-router-dom';
-import Todos from './components/Todos';
+import TodosContainer from './components/TodosContainer';
 import Home from './components/Home';
 import Callback from './components/Callback';
 import Authorized from './hocs/Authorized';
@@ -9,7 +9,7 @@ const Routes = () =>
 
 <Switch>
   <Route exact path='/' component={Home} />
-  <Route path='/todos' component={Authorized(Todos)} />
+  <Route path='/todos' component={Authorized(TodosContainer)} />
   <Route path="/callback" component={Callback} />
 </Switch>
 
