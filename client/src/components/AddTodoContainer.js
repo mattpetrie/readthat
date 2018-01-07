@@ -7,8 +7,8 @@ const mapStateToProps = (state) => ({
 });
 
 const mapDispatchToProps = (dispatch) => ({
-  onAddTodo(todo, id) {
-    dispatch(actions.addTodo(todo, id));
+  onAddTodo(todo) {
+    dispatch(actions.addTodo(todo));
   },
 });
 

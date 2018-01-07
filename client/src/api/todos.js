@@ -10,8 +10,6 @@ const addTodoToServer = (title) => axios.post(`${BASE_URL}/api/todos`,
   { title },
   { headers: { Authorization: `Bearer ${getAccessToken()}` },
   })
-  .then(response => {
-    return response.data;
-  });
+  .then(response => response.data);
 
 export { getTodosData, addTodoToServer };

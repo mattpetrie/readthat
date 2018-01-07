@@ -15,9 +15,9 @@ const AddTodo = ({
           return;
         }
         addTodoToServer(input.value).then(res => {
-          console.log(res);
-          onAddTodo(res.title, res.id);
+          onAddTodo(res);
         });
+        // Maybe add Todo with current time instead of from response?
         input.value = '';
       }}
     >

@@ -1,9 +1,7 @@
-export const addTodo = (title, id) => {
-  console.log(`addTodo() RECEIVED title: ${title}, id:${id}`)
+export const addTodo = (todo) => {
   return {
     type: 'ADD_TODO',
-    title,
-    id,
+    todo,
   };
 };
 

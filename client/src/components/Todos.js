@@ -18,7 +18,7 @@ class Todos extends Component {
 
   render() {
     return (
-      <div>
+      <div className="todos">
         <h1>Todos</h1>
         {this.props.todos.sort((a, b) => a.id - b.id).map(todo => <Todo todo={todo} key={todo.id}/>)}
         <AddTodoContainer />
