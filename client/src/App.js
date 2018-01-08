@@ -1,14 +1,10 @@
 import React from 'react';
 import { Provider } from 'react-redux';
-import { createStore } from 'redux';
 import { BrowserRouter } from 'react-router-dom';
-import { masterReducer } from './redux/reducers';
 import Routes from './Routes';
+import configureStore from './configureStore';
 
-const store = createStore(
-  masterReducer,
-  window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__(),
-);
+const store = configureStore();
 
 const App = () => (
   <Provider store={store}>
