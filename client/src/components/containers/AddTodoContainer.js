@@ -1,4 +1,3 @@
-import React from 'react';
 import { connect } from 'react-redux';
 import AddTodo from '../AddTodo';
 import * as actions from '../../redux/actions.js';

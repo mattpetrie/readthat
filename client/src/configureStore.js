@@ -12,7 +12,9 @@ const configureStore = () => {
 
   store.subscribe(throttle(() => {
       getTodosData().then(todos => {
-        store.dispatch(actions.populateTodosFromServer(todos));
+        if (store.getState().todos.filter(todo => todo.new).length > 0) {
+          store.dispatch(actions.populateTodosFromServer(todos));
+        }
       });
     }, 5000));
 
