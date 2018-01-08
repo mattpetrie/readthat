@@ -2,7 +2,7 @@ import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import Todo from './Todo';
 import { getTodosData } from '../api/todos';
-import AddTodoContainer from './AddTodoContainer'
+import AddTodoContainer from './containers/AddTodoContainer'
 
 class Todos extends Component {
 

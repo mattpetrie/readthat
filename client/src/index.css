@@ -7,3 +7,7 @@ body {
 .todos {
   margin-left: 20px;
 }
+
+.new {
+  color: #aaa;
+}

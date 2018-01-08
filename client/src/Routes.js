@@ -1,6 +1,6 @@
 import React from 'react';
 import { Switch, Route } from 'react-router-dom';
-import TodosContainer from './components/TodosContainer';
+import TodosContainer from './components/containers/TodosContainer';
 import Home from './components/Home';
 import Callback from './components/Callback';
 import Authorized from './hocs/Authorized';

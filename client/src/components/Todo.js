@@ -2,6 +2,6 @@ import React from 'react';
 
 const Todo = ({
   todo,
-}) => <div>{todo.title}</div>
+}) => <div className={todo.new ? 'new' : ''}>{todo.title}</div>
 
 export default Todo;
