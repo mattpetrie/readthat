@@ -1,6 +1,6 @@
 import { combineReducers } from 'redux';
 
-const todo = (state = [], action) => {
+const todo = (state = {}, action) => {
   switch (action.type) {
     case 'ADD_TODO':
       return action.todo;
@@ -39,6 +39,49 @@ const todos = (state = [], action) => {
   }
 };
 
+///
+
+const post = (state = {}, action) => {
+  switch (action.type) {
+    case 'ADD_POST':
+      return action.post;
+    case 'TOGGLE_POST':
+      if (state.id !== action.id) {
+        return state;
+      }
+      return {
+        ...state,
+        completed: !state.completed
+      };
+    default:
+      return state;
+  }
+};
+
+const posts = (state = [], action) => {
+  switch (action.type) {
+    case 'POPULATE_POSTS_FROM_SERVER':
+      return action.posts;
+    case 'ADD_POST':
+      return [
+        ...state,
+        post(undefined, action)
+      ];
+    case 'TOGGLE_POST':
+      return state.map(t =>
+        post(t, action)
+      );
+    case 'DELETE_POST':
+      return state.map(t =>
+        post(t, action)
+      );
+    default:
+      return state;
+  }
+};
+
+
 export const masterReducer = combineReducers({
   todos,
+  posts,
 });
