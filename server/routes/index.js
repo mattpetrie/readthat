@@ -1,14 +1,14 @@
 const todosController = require('../controllers').todos;
 const todoItemsController = require('../controllers').todoItems;
 const authCheck = require('../auth.js');
-const postRoutes = require('./posts');
+const postsRoutes = require('./posts');
 
 module.exports = (app) => {
   app.get('/api', authCheck, (req, res) => res.status(200).send({
     message: 'Welcome to the Todos API!',
   }));
 
-  app.use('/api/posts', postRoutes);
+  app.use('/api/posts', postsRoutes);
 
   app.post('/api/todos', authCheck, todosController.create);
   app.get('/api/todos', authCheck, todosController.list);

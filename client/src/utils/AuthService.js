@@ -9,11 +9,36 @@ const REDIRECT = process.env.REACT_APP_AUTH0_REDIRECT;
 const SCOPE = 'read:allposts';
 const AUDIENCE = 'readthat';
 
+const dataNamespace = 'https://www.mattpetrie.io/';
+const dataParams = ['email', 'nickname'];
+
 var auth = new auth0.WebAuth({
   clientID: CLIENT_ID,
   domain: CLIENT_DOMAIN,
-  scope: 'openid profile',
+  scope: 'openid profile email',
 });
+
+///
+
+export function getProfile() {
+  let profile = {};
+  const token = getDecodedIdToken();
+  dataParams.forEach(param => {
+    profile[param] = token[dataNamespace + param];
+  })
+  return profile;
+}
+
+export function getDecodedAccessToken() {
+  return decode(getAccessToken());
+}
+
+export function getDecodedIdToken() {
+  return decode(localStorage.getItem(ID_TOKEN_KEY));
+}
+
+///
+
 
 export function login() {
   auth.authorize({

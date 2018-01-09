@@ -12,14 +12,14 @@ const Home = ({
       <img src={logo} className="App-logo" alt="logo" />
       <h1 className="App-title">Welcome to React</h1>
     </header>
-    <p className="App-intro">
-      <Link to='/todos'>See Todos!</Link>
+    <div className="App-intro">
+      <Link to='/todos'>Todos</Link> <Link to='/posts'>Posts</Link>
       <div>
          {
            (isLoggedIn()) ? ( <button onClick={() => logout(history)}>Log out </button> ) : ( <button onClick={() => login()}>Log In</button> )
          }
       </div>
-    </p>
+    </div>
   </div>
 
 export default Home;
