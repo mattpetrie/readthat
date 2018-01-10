@@ -2,7 +2,7 @@ import React from 'react';
 import { Provider } from 'react-redux';
 import { BrowserRouter } from 'react-router-dom';
 import Routes from './Routes';
-import configureStore from './configureStore';
+import configureStore from './redux/configureStore';
 
 const store = configureStore();
 

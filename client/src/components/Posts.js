@@ -1,19 +1,15 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import Post from './Post';
+import AddPostContainer from './containers/AddPostContainer'
 import { getPostsData } from '../api/posts';
 
-import { getDecodedIdToken, getProfile, isLoggedIn } from '../utils/AuthService';
+import { getProfile, isLoggedIn } from '../utils/AuthService';
 
 class Posts extends Component {
-  constructor() {
-    super();
-    this.timerToggle = undefined;
-  }
 
   getPosts() {
     getPostsData().then(posts => {
-      //console.log(getDecodedIdToken()); //
       if (isLoggedIn()) { console.log(getProfile()); }
       this.props.onPopulatePostsFromServer(posts);
     });
@@ -28,8 +24,11 @@ class Posts extends Component {
       <div className="posts">
         <h1>Posts</h1>
         {this.props.posts.sort((a, b) => a.id - b.id).map(post => <Post post={post} key={post.id}/>)}
-        <br />
+        <br /><br />
+        <AddPostContainer />
+        <br /><br />
         <Link to='/'>Home</Link>
+
       </div>
     );
   }

@@ -26,6 +26,7 @@ export function getProfile() {
   dataParams.forEach(param => {
     profile[param] = token[dataNamespace + param];
   })
+  profile.authorId = token.sub;
   return profile;
 }
 

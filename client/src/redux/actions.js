@@ -5,6 +5,13 @@ export const addTodo = (todo) => {
   };
 };
 
+export const addPost = (post) => {
+  return {
+    type: 'ADD_POST',
+    post,
+  };
+};
+
 export const populateTodosFromServer = (todos) => ({
   type: 'POPULATE_TODOS_FROM_SERVER',
   todos,

@@ -1,8 +1,10 @@
 import { createStore } from 'redux';
 import throttle from 'lodash/throttle';
-import { masterReducer } from './redux/reducers';
-import * as actions from './redux/actions';
-import { getTodosData } from './api/todos';
+import { masterReducer } from './reducers';
+import * as actions from './actions';
+import { getTodosData } from '../api/todos';
+import { getPostsData } from '../api/posts';
+
 
 const configureStore = () => {
   const store = createStore(
@@ -16,7 +18,13 @@ const configureStore = () => {
           store.dispatch(actions.populateTodosFromServer(todos));
         }
       });
-    }, 5000));
+      getPostsData().then(posts => {
+        if (store.getState().posts.filter(post => post.new).length > 0) {
+          store.dispatch(actions.populatePostsFromServer(posts));
+        }
+      });
+    }, 10000)
+  );
 
   return store;
 };

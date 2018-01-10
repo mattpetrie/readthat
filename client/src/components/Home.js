@@ -15,9 +15,12 @@ const Home = ({
     <div className="App-intro">
       <Link to='/todos'>Todos</Link> <Link to='/posts'>Posts</Link>
       <div>
-         {
-           (isLoggedIn()) ? ( <button onClick={() => logout(history)}>Log out </button> ) : ( <button onClick={() => login()}>Log In</button> )
-         }
+        {
+          (isLoggedIn()) ?
+            ( <button onClick={() => logout(history)}>Log out </button> )
+            :
+            ( <button onClick={() => login()}>Log In</button> )
+        }
       </div>
     </div>
   </div>

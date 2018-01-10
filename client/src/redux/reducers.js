@@ -45,14 +45,6 @@ const post = (state = {}, action) => {
   switch (action.type) {
     case 'ADD_POST':
       return action.post;
-    case 'TOGGLE_POST':
-      if (state.id !== action.id) {
-        return state;
-      }
-      return {
-        ...state,
-        completed: !state.completed
-      };
     default:
       return state;
   }
@@ -67,10 +59,6 @@ const posts = (state = [], action) => {
         ...state,
         post(undefined, action)
       ];
-    case 'TOGGLE_POST':
-      return state.map(t =>
-        post(t, action)
-      );
     case 'DELETE_POST':
       return state.map(t =>
         post(t, action)

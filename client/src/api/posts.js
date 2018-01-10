@@ -6,4 +6,10 @@ const getPostsData = () => axios.get(`${BASE_URL}/api/posts`,
   { headers: { Authorization: `Bearer ${getAccessToken()}` }})
   .then(response => response.data);
 
-export { getPostsData };
+const addPostToServer = (post) => axios.post(`${BASE_URL}/api/posts`,
+  { post },
+  { headers: { Authorization: `Bearer ${getAccessToken()}` },
+  })
+  .then(response => response.data);
+
+export { getPostsData, addPostToServer };
