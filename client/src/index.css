@@ -11,3 +11,38 @@ body {
 .new {
   color: #aaa;
 }
+
+.post {
+  padding: 20px;
+  border: 1px solid black;
+  margin: 5px;
+}
+
+.post-title {
+  font-style: bold;
+}
+
+.post-body {
+  font-size: 12px;
+  text-indent: 10px;
+  margin-top: 5px;
+}
+
+.post-url {
+  font-size: 10px;
+  font-style: italic;
+  color: #BEBEBE;
+  top: -5px;
+  position: relative;
+}
+
+.add-post {
+  font-size: 14px;
+  padding: 20px;
+  border: 1px solid black;
+  margin: 5px;
+}
+
+.add-post input {
+  margin-bottom: 10px;
+}

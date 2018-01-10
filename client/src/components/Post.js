@@ -1,24 +1,22 @@
 import React from 'react';
 
-const bodyStyle = {
-  'fontSize': '10px',
-  'textIndent': '25px',
-};
-
 const Post = ({
   post,
 }) =>
-<div>
+<div className="post">
   { post.url ?
-    <a href={post.url} target="_blank" className={post.new ? 'new' : ''}>
+    <div>
+    <a href={post.url} target="_blank" className={post.new ? 'post-title new' : 'post-title'}>
       {post.title}
-    </a>
+    </a><br />
+    <span className="post-url">({post.url})</span>
+  </div>
     :
-    <div className={post.new ? 'new' : ''}>
+    <div className={post.new ? 'post-title new' : 'post-title'}>
       {post.title}
     </div>
   }
-  {post.body ? <div style={bodyStyle}>{post.body}</div> : ''}
+  {post.body ? <div className="post-body">{post.body}</div> : ''}
 </div>
 
 
