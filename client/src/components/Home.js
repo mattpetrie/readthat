@@ -13,7 +13,7 @@ const Home = ({
       <h1 className="App-title">Welcome to React</h1>
     </header>
     <div className="App-intro">
-      <Link to='/todos'>Todos</Link> <Link to='/posts'>Posts</Link>
+      <Link to='/posts'>Posts</Link>
       <div>
         {
           (isLoggedIn()) ?

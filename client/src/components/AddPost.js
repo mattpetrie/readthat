@@ -1,6 +1,6 @@
 import React from 'react';
 import { addPostToServer } from '../api/posts';
-import { getProfile, isLoggedIn } from '../utils/AuthService';
+import { getProfile } from '../utils/AuthService';
 
 /*
 title,
