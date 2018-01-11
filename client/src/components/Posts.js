@@ -6,10 +6,6 @@ import { getPostsData } from '../api/posts';
 import { getProfile, isLoggedIn, login, logout } from '../utils/AuthService';
 
 class Posts extends Component {
-  constructor() {
-    super();
-    this.test = console.log(this.props);
-  }
 
   getPosts() {
     getPostsData().then(posts => {

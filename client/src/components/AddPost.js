@@ -17,6 +17,7 @@ const AddPost = ({
 
   return (
   <div className="add-post">
+    <h3>Submit a Post</h3>
     <form onSubmit={e => {
         e.preventDefault();
         if (!title.value.trim()) {

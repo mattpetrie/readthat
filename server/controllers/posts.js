@@ -1,4 +1,5 @@
 const Post = require('../models').Post;
+const PostComment = require('../models').PostComment;
 
 module.exports = {
   create(req, res) {
@@ -12,18 +13,29 @@ module.exports = {
       })
       .then(post => res.status(201).send(post))
       .catch(error => res.status(400).send(error));
+      console.log('**********HERE**********');
+      console.log(post); //
   },
   list(req, res) {
     return Post
       .findAll({
         order: [['createdAt', 'DESC']],
+        include: [{
+          model: PostComment,
+          as: 'postComments',
+        }],
       })
       .then(posts => res.status(200).send(posts))
       .catch(error => res.status(400).send(error));
   },
   retrieve(req, res) {
     return Post
-      .findById(req.params.postId)
+      .findById(req.params.postId, {
+        include: [{
+          model: PostComment,
+          as: 'postComments',
+        }],
+      })
       .then(post => {
         if (!post) {
           return res.status(404).send({
@@ -36,7 +48,12 @@ module.exports = {
   },
   update(req, res) {
     return Post
-      .findById(req.params.postId)
+      .findById(req.params.postId, {
+        include: [{
+          model: PostComment,
+          as: 'postComments',
+        }],
+      })
       .then(post => {
         if (!post) {
           return res.status(404).send({

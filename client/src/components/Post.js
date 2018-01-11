@@ -17,6 +17,7 @@ const Post = ({
     </div>
   }
   {post.body ? <div className="post-body">{post.body}</div> : ''}
+  <div className="comment-count">{post.postComments.length} comments</div>
 </div>
 
 

@@ -40,7 +40,6 @@ export function getDecodedIdToken() {
 
 ///
 
-
 export function login() {
   auth.authorize({
     responseType: 'token id_token',

@@ -4,6 +4,12 @@ body {
   font-family: sans-serif;
 }
 
+h3 {
+  margin: 0px;
+  text-align: center;
+  font-weight: bold;
+}
+
 .centered {
   text-align: center;
 }
@@ -53,4 +59,16 @@ body {
 
 .add-post input {
   margin-bottom: 10px;
+}
+
+.comment-count {
+  margin-top: 10px;
+  font-size: 10px;
+  font-style: italic;
+}
+
+.comment {
+  padding: 20px;
+  background-color: #F5F5F5;
+  margin: 5px;
 }
