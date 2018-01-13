@@ -13,8 +13,6 @@ module.exports = {
       })
       .then(post => res.status(201).send(post))
       .catch(error => res.status(400).send(error));
-      console.log('**********HERE**********');
-      console.log(post); //
   },
   list(req, res) {
     return Post
