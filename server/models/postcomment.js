@@ -23,10 +23,3 @@ module.exports = (sequelize, DataTypes) => {
 
   return PostComment;
 };
-
-
-/*
-body: DataTypes.STRING,
-authorId: DataTypes.STRING,
-parent: DataTypes.STRING
-*/
