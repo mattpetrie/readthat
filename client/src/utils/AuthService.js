@@ -9,9 +9,6 @@ const REDIRECT = process.env.REACT_APP_AUTH0_REDIRECT;
 const SCOPE = 'read:allposts';
 const AUDIENCE = 'readthat';
 
-const dataNamespace = 'https://www.mattpetrie.io/';
-const dataParams = ['email', 'nickname'];
-
 var auth = new auth0.WebAuth({
   clientID: CLIENT_ID,
   domain: CLIENT_DOMAIN,
@@ -21,6 +18,8 @@ var auth = new auth0.WebAuth({
 ///
 
 export function getProfile() {
+  const dataNamespace = 'https://www.readthat.io/';
+  const dataParams = ['email', 'nickname', 'picture'];
   let profile = {};
   const token = getDecodedIdToken();
   dataParams.forEach(param => {

@@ -14,7 +14,7 @@ class Posts extends Component {
     });
   }
 
-  componentDidMount() {
+  componentWillMount() {
     this.getPosts();
   }
 
@@ -22,7 +22,8 @@ class Posts extends Component {
     return (
       <div className="posts">
         <h1 className="title">Posts</h1>
-        {this.props.posts.sort((a, b) => a.id - b.id).map(post => <Post post={post} key={post.id}/>)}
+        {this.props.posts.sort((a, b) => a.id - b.id).map(post =>
+          <Post post={post} commentsLink={true} key={post.id}/>)}
         <br /><br />
         {isLoggedIn() ?
           (

@@ -9,4 +9,4 @@ const PostComment = ({
 </div>
 
 
-export default Post;
+export default PostComment;
