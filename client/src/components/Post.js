@@ -19,7 +19,7 @@ const Post = ({
         {post.title}
       </div>
     }
-    {post.body ? <div className="post-body">{commentsLink ? post.body.slice(0, 255).concat('...') : post.body}</div> : ''}
+    {post.body ? <div className="post-body">{commentsLink ? ( post.body.length > 255 ? post.body.slice(0, 255).concat('...') : post.body ) : post.body}</div> : ''}
     {commentsLink ?
       <Link to={`/posts/${post.id}`}>
         <div className="comment-count">{post.postComments ? post.postComments.length : '0'} comments</div>
