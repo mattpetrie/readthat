@@ -8,10 +8,12 @@ module.exports = {
         type: Sequelize.INTEGER
       },
       body: {
-        type: Sequelize.TEXT
+        type: Sequelize.TEXT,
+        allowNull: false,
       },
       authorId: {
-        type: Sequelize.STRING
+        type: Sequelize.STRING,
+        allowNull: false,
       },
       parent: {
         type: Sequelize.STRING

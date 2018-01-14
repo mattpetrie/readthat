@@ -1,7 +1,7 @@
 module.exports = (sequelize, DataTypes) => {
   const PostComment = sequelize.define('PostComment', {
     body: {
-      type: DataTypes.STRING,
+      type: DataTypes.TEXT,
       allowNull: false,
     },
     authorId: {

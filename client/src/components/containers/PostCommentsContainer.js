@@ -3,12 +3,12 @@ import PostComments from '../PostComments';
 import * as actions from '../../redux/actions';
 
 const mapStateToProps = (state, ownProps) => ({
-  posts: state.posts,
+  currentPost: state.currentPost,
 });
 
 const mapDispatchToProps = (dispatch) => ({
-  onPopulatePostsFromServer(posts) {
-    dispatch(actions.populatePostsFromServer(posts));
+  onGetPostFromServer(post) {
+    dispatch(actions.getPostFromServer(post));
   },
 });
 

@@ -68,8 +68,23 @@ const posts = (state = [], action) => {
   }
 };
 
+const currentPost = (state = {}, action) => {
+  switch (action.type) {
+    case 'GET_POST_FROM_SERVER':
+      return action.post;
+    case 'ADD_POST_COMMENT':
+      return {
+        ...state,
+        postComments: [...state.postComments, action.comment]
+      };
+    default:
+      return state;
+  }
+};
+
 
 export const masterReducer = combineReducers({
   todos,
   posts,
+  currentPost,
 });

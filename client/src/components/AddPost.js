@@ -2,13 +2,6 @@ import React from 'react';
 import { addPostToServer } from '../api/posts';
 import { getProfile } from '../utils/AuthService';
 
-/*
-title,
-body,
-url,
-authorId,
-*/
-
 const AddPost = ({
   onAddPost,
 }) => {
