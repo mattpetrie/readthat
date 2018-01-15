@@ -1,5 +1,8 @@
 import decode from 'jwt-decode';
 import auth0 from 'auth0-js';
+
+import { addUserToServer } from '../api/users';
+
 const ID_TOKEN_KEY = 'id_token';
 const ACCESS_TOKEN_KEY = 'access_token';
 
@@ -97,7 +100,11 @@ export function setIdToken() {
 
 export function isLoggedIn() {
   const idToken = getIdToken();
-  return !!idToken && !isTokenExpired(idToken);
+  const loggedIn = !!idToken && !isTokenExpired(idToken);
+
+  if (loggedIn) { addUserToServer(getProfile()) }
+
+  return loggedIn;
 }
 
 function getTokenExpirationDate(encodedToken) {
