@@ -4,10 +4,12 @@ module.exports = (sequelize, DataTypes) => {
       type: DataTypes.TEXT,
       allowNull: false,
     },
+    /*
     authorId: {
       type: DataTypes.STRING,
       allowNull: false,
     },
+    */
     parent: {
       type: DataTypes.STRING,
       allowNull: true,
@@ -17,6 +19,10 @@ module.exports = (sequelize, DataTypes) => {
   PostComment.associate = (models) => {
     PostComment.belongsTo(models.Post, {
       foreignKey: 'postId',
+      onDelete: 'CASCADE',
+    });
+    PostComment.belongsTo(models.User, {
+      foreignKey: 'authorId',
       onDelete: 'CASCADE',
     });
   };

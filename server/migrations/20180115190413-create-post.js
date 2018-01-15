@@ -1,22 +1,32 @@
+'use strict';
 module.exports = {
   up: (queryInterface, Sequelize) => {
-    return queryInterface.createTable('PostComments', {
+    return queryInterface.createTable('Posts', {
       id: {
         allowNull: false,
         autoIncrement: true,
         primaryKey: true,
         type: Sequelize.INTEGER
       },
-      body: {
-        type: Sequelize.TEXT,
+      title: {
+        type: Sequelize.STRING,
         allowNull: false,
+      },
+      url: {
+        type: Sequelize.STRING
+      },
+      body: {
+        type: Sequelize.TEXT
       },
       authorId: {
         type: Sequelize.STRING,
         allowNull: false,
-      },
-      parent: {
-        type: Sequelize.STRING
+        onDelete: 'CASCADE',
+        references: {
+          model: 'Users',
+          key: 'authorId',
+          as: 'authorId',
+        },
       },
       createdAt: {
         allowNull: false,
@@ -25,19 +35,10 @@ module.exports = {
       updatedAt: {
         allowNull: false,
         type: Sequelize.DATE
-      },
-      postId: {
-        type: Sequelize.INTEGER,
-        onDelete: 'CASCADE',
-        references: {
-          model: 'Posts',
-          key: 'id',
-          as: 'postId',
-        },
-      },
+      }
     });
   },
   down: (queryInterface, Sequelize) => {
-    return queryInterface.dropTable('PostComments');
+    return queryInterface.dropTable('Posts');
   }
 };

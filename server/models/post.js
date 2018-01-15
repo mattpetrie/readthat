@@ -12,16 +12,26 @@ module.exports = (sequelize, DataTypes) => {
       type: DataTypes.TEXT,
       allowNull: true,
     },
+    /*
     authorId: {
       type: DataTypes.STRING,
       allowNull: false,
     },
+    */
   });
 
   Post.associate = (models) => {
     Post.hasMany(models.PostComment, {
       foreignKey: 'postId',
       as: 'postComments',
+    });
+    Post.hasMany(models.PostVote, {
+      foreignKey: 'postId',
+      as: 'postVotes',
+    });
+    Post.belongsTo(models.User, {
+      foreignKey: 'authorId',
+      onDelete: 'CASCADE',
     });
   };
 
