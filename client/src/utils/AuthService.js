@@ -102,6 +102,7 @@ export function isLoggedIn() {
   const idToken = getIdToken();
   const loggedIn = !!idToken && !isTokenExpired(idToken);
 
+  // TODO: Implmenet check if user already exists and only submit if they don't
   if (loggedIn) { addUserToServer(getProfile()) }
 
   return loggedIn;

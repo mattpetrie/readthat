@@ -19,6 +19,7 @@ class PostComments extends Component {
 
   render() {
     const currentPost = this.props.currentPost;
+    console.log(currentPost);
     if (!currentPost) {
       return <div>Loading...</div>
     }

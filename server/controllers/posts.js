@@ -1,5 +1,6 @@
 const Post = require('../models').Post;
 const PostComment = require('../models').PostComment;
+const User = require('../models').User;
 
 module.exports = {
   create(req, res) {
@@ -21,6 +22,10 @@ module.exports = {
         include: [{
           model: PostComment,
           as: 'postComments',
+        }, {
+          model: User,
+          as: 'author',
+          attributes: ['nickname'],
         }],
       })
       .then(posts => res.status(200).send(posts))
@@ -32,6 +37,10 @@ module.exports = {
         include: [{
           model: PostComment,
           as: 'postComments',
+        }, {
+          model: User,
+          as: 'author',
+          attributes: ['nickname'],
         }],
       })
       .then(post => {
@@ -50,6 +59,10 @@ module.exports = {
         include: [{
           model: PostComment,
           as: 'postComments',
+        }, {
+          model: User,
+          as: 'author',
+          attributes: ['nickname'],
         }],
       })
       .then(post => {

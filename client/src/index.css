@@ -50,6 +50,12 @@ h3 {
   position: relative;
 }
 
+.byline {
+  font-size: 10px;
+  font-style: italic;
+  color: #BEBEBE;
+}
+
 .add-post {
   font-size: 14px;
   padding: 20px;
