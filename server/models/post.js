@@ -12,12 +12,6 @@ module.exports = (sequelize, DataTypes) => {
       type: DataTypes.TEXT,
       allowNull: true,
     },
-    /*
-    authorId: {
-      type: DataTypes.STRING,
-      allowNull: false,
-    },
-    */
   });
 
   Post.associate = (models) => {

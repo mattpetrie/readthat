@@ -22,6 +22,11 @@ module.exports = {
         include: [{
           model: PostComment,
           as: 'postComments',
+          include: [{
+            model: User,
+            as: 'author',
+            attributes: ['nickname'],
+          }],
         }, {
           model: User,
           as: 'author',
@@ -37,6 +42,11 @@ module.exports = {
         include: [{
           model: PostComment,
           as: 'postComments',
+          include: [{
+            model: User,
+            as: 'author',
+            attributes: ['nickname'],
+          }],
         }, {
           model: User,
           as: 'author',
@@ -59,6 +69,11 @@ module.exports = {
         include: [{
           model: PostComment,
           as: 'postComments',
+          include: [{
+            model: User,
+            as: 'author',
+            attributes: ['nickname'],
+          }],
         }, {
           model: User,
           as: 'author',

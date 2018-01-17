@@ -23,6 +23,7 @@ module.exports = (sequelize, DataTypes) => {
     });
     PostComment.belongsTo(models.User, {
       foreignKey: 'authorId',
+      as: 'author',
       onDelete: 'CASCADE',
     });
   };
