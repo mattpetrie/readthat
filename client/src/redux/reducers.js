@@ -82,9 +82,19 @@ const currentPost = (state = {}, action) => {
   }
 };
 
+const currentUser = (state = {}, action) => {
+  switch (action.type) {
+    case 'GET_USER_FROM_SERVER':
+      return action.user;
+    default:
+      return state;
+  }
+};
+
 
 export const masterReducer = combineReducers({
   todos,
   posts,
   currentPost,
+  currentUser,
 });

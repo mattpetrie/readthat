@@ -33,3 +33,8 @@ export const getPostFromServer = (post) => ({
   type: 'GET_POST_FROM_SERVER',
   post,
 })
+
+export const getUserFromServer = (user) => ({
+  type: 'GET_USER_FROM_SERVER',
+  user,
+})

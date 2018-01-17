@@ -20,7 +20,7 @@ const Post = ({
         {post.title}
       </div>
     }
-    <span className="byline">Submitted by {post.author.nickname} {timeago().format(post.createdAt)}</span>
+    {post.author ? <span className="byline">Submitted by {post.author.nickname} {timeago().format(post.createdAt)}</span> : '' }
     {post.body ? <div className="post-body">{commentsLink ? ( post.body.length > 255 ? post.body.slice(0, 255).concat('...') : post.body ) : post.body}</div> : ''}
     {commentsLink ?
       <Link to={`/posts/${post.id}`}>

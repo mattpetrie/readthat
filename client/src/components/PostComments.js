@@ -3,7 +3,7 @@ import Post from './Post';
 import PostComment from './PostComment';
 import AddPostCommentContainer from './containers/AddPostCommentContainer';
 import { getPostData } from '../api/posts';
-import { getProfile, isLoggedIn, login, logout } from '../utils/AuthService';
+import { isLoggedIn, login, logout } from '../utils/AuthService';
 
 class PostComments extends Component {
 
@@ -19,7 +19,7 @@ class PostComments extends Component {
 
   render() {
     const currentPost = this.props.currentPost;
-    console.log(currentPost);
+    console.log(currentPost); // CONSOLE
     if (!currentPost) {
       return <div>Loading...</div>
     }
