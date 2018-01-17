@@ -32,11 +32,11 @@ const AddPost = ({
         body.value = '';
       }}
     >
-      Title:<br />
+      Title<br />
       <input size="50" ref={node => { title = node; }} /><br />
-      URL:<br />
+      URL <span className="post-url">(optional)</span><br />
       <input size="50" ref={node => { url = node; }} /><br />
-      Body:<br />
+      Body<br />
       <textarea name="body" rows="8" cols="50"
         ref={node => { body = node; }} /><br />
       <button type="submit">
