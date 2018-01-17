@@ -32,18 +32,27 @@ h3 {
     padding: 14px 16px;
     text-decoration: none;
     float: right;
+    height: 50px;
 }
 
 .navbar li button:hover {
   opacity: .8;
 }
 
+.navbar img {
+    border: 0;
+    height: 34px;
+    width: 34px;
+    border-radius: 25em;
+    display: block;
+    margin-right: 16px;
+}
 
 .navbar li a {
     display: block;
     color: white;
     text-align: center;
-    padding: 14px 16px;
+    padding: 16px 16px;
     text-decoration: none;
 }
 
@@ -52,6 +61,23 @@ h3 {
     background-color: #111;
 }
 
+.navbar .avatar {
+  float: right;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  height: 46px;
+}
+
+.navbar .username {
+  float: right;
+  display: block;
+  color: white;
+  text-align: center;
+  text-decoration: none;
+  font-style: italic;
+  margin: auto 16px;
+}
 
 .centered {
   text-align: center;

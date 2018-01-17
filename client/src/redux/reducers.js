@@ -86,6 +86,8 @@ const currentUser = (state = {}, action) => {
   switch (action.type) {
     case 'GET_USER_FROM_SERVER':
       return action.user;
+    case 'REMOVE_USER_INFO':
+        return {};
     default:
       return state;
   }

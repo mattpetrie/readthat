@@ -38,3 +38,7 @@ export const getUserFromServer = (user) => ({
   type: 'GET_USER_FROM_SERVER',
   user,
 })
+
+export const unmountUser = () => ({
+  type: 'REMOVE_USER_INFO',
+})
