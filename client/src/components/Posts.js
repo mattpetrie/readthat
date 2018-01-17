@@ -1,9 +1,8 @@
 import React, { Component } from 'react';
-import { Link } from 'react-router-dom';
 import Post from './Post';
 import AddPostContainer from './containers/AddPostContainer'
 import { getPostsData } from '../api/posts';
-import { getProfile, isLoggedIn, login, logout } from '../utils/AuthService';
+import { getProfile, isLoggedIn } from '../utils/AuthService';
 
 class Posts extends Component {
 

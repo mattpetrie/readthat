@@ -125,7 +125,7 @@ h3 {
   font-size: 10px;
   font-style: italic;
   color: #BEBEBE;
-  top: -10px;
+  top: -5px;
   position: relative;
 }
 
@@ -136,7 +136,7 @@ h3 {
   margin: 5px;
 }
 
-.add-post input {
+.add-post input, textarea {
   margin-bottom: 10px;
 }
 

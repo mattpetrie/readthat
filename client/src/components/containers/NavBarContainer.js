@@ -1,5 +1,5 @@
 import { connect } from 'react-redux';
-import { Switch, Route, withRouter } from 'react-router-dom';
+import { withRouter } from 'react-router-dom';
 import NavBar from '../NavBar';
 import * as actions from '../../redux/actions.js';
 

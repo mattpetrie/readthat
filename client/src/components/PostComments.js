@@ -3,7 +3,7 @@ import Post from './Post';
 import PostComment from './PostComment';
 import AddPostCommentContainer from './containers/AddPostCommentContainer';
 import { getPostData } from '../api/posts';
-import { isLoggedIn, login, logout } from '../utils/AuthService';
+import { isLoggedIn } from '../utils/AuthService';
 
 class PostComments extends Component {
 
