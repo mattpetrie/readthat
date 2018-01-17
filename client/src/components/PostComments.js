@@ -19,7 +19,6 @@ class PostComments extends Component {
 
   render() {
     const currentPost = this.props.currentPost;
-    console.log(currentPost); // CONSOLE
     if (!currentPost) {
       return <div>Loading...</div>
     }
@@ -37,18 +36,9 @@ class PostComments extends Component {
         </div>
         <br /><br />
         {isLoggedIn() ?
-          (
-            <div>
-              <AddPostCommentContainer postId={currentPost.id} />
-              <div className="centered">
-                <button onClick={() => logout(this.props.history)}>Log out</button>
-              </div>
-            </div>
-          )
+          <AddPostCommentContainer postId={currentPost.id} />
           :
-          ( <div className="centered">
-              <button onClick={() => login()}>Log In to Add Comment</button>
-            </div> )
+          <div className="log-in-to">... Log In to Add Comment ...</div>
         }
         <br /><br />
       </div>

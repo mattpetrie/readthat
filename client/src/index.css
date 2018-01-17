@@ -79,8 +79,10 @@ h3 {
   margin: auto 16px;
 }
 
-.centered {
+.log-in-to {
   text-align: center;
+  font-style: italic;
+  color: lightGrey;
 }
 
 .todos {

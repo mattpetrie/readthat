@@ -30,22 +30,10 @@ class Posts extends Component {
           <Post post={post} commentsLink={true} key={post.id}/>)}
         <br /><br />
         {isLoggedIn() ?
-          (
-            <div>
-              <AddPostContainer />
-              <div className="centered">
-                <button onClick={() => logout(this.props.history)}>Log out</button>
-              </div>
-            </div>
-          )
+          <AddPostContainer />
           :
-          ( <div className="centered">
-              <button onClick={() => login()}>Log In to Add Post</button>
-            </div> )
+          <div className="log-in-to">... Log In to Add Post ...</div>
         }
-        <br /><br />
-        <Link to='/'><div className="centered">Home</div></Link>
-
       </div>
     );
   }
