@@ -4,12 +4,6 @@ module.exports = (sequelize, DataTypes) => {
       type: DataTypes.TEXT,
       allowNull: false,
     },
-    /*
-    authorId: {
-      type: DataTypes.STRING,
-      allowNull: false,
-    },
-    */
     parent: {
       type: DataTypes.STRING,
       allowNull: true,

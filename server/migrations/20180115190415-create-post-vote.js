@@ -31,6 +31,7 @@ module.exports = {
       },
       postId: {
         type: Sequelize.INTEGER,
+        allowNull: false,
         onDelete: 'CASCADE',
         references: {
           model: 'Posts',
@@ -38,6 +39,12 @@ module.exports = {
           as: 'postId',
         },
       },
+    })
+    .then(function() {
+      return queryInterface.addConstraint('PostVotes', ['authorId', 'postId'], {
+        type: 'unique',
+        name: 'custom_unique_constraint_name'
+      })
     }),
   down: (queryInterface /* , Sequelize */) =>
     queryInterface.dropTable('PostVotes'),

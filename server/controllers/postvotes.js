@@ -7,7 +7,7 @@ module.exports = {
       .create({
         vote,
         authorId,
-        postId
+        postId: req.params.postId,
       })
       .then(postVote => res.status(201).send(postVote))
       .catch(error => res.status(400).send(error));

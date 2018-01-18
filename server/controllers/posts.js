@@ -1,6 +1,8 @@
 const Post = require('../models').Post;
 const PostComment = require('../models').PostComment;
 const User = require('../models').User;
+const PostVote = require('../models').PostVote;
+const db = require('../models/index');
 
 module.exports = {
   create(req, res) {
@@ -51,7 +53,16 @@ module.exports = {
           model: User,
           as: 'author',
           attributes: ['nickname'],
-        }],
+        }, {
+          model: PostVote,
+          as: 'postVotes',
+          attributes: ['vote'],
+          //attributes: [[db.sequelize.fn('SUM', db.sequelize.col('postVotes.vote')), 'votes']],
+        },
+      ], /*
+      attributes: { include: [[db.sequelize.query(`SELECT SUM("vote") FROM "PostVotes"
+WHERE "PostVotes"."postId" = ${req.params.postId};`
+, { type: db.sequelize.QueryTypes.SELECT}), "thisPostsVotes"]] }, */
       })
       .then(post => {
         if (!post) {

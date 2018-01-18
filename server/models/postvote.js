@@ -4,12 +4,6 @@ module.exports = (sequelize, DataTypes) => {
       type: DataTypes.INTEGER,
       allowNull: false,
     },
-    /*
-    authorId: {
-      type: DataTypes.STRING,
-      allowNull: false,
-    },
-    */
   });
 
   PostVote.associate = (models) => {
