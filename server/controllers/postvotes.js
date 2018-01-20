@@ -13,6 +13,48 @@ module.exports = {
       .catch(error => res.status(400).send(error));
   },
 
+//////
+list(req, res) {
+  const authorId = req.params.authorId;
+  return PostVote
+    .findAll({
+      where: {
+        authorId: authorId,
+      }
+    })
+    .then(vote => {
+      if (!vote) {
+        return res.status(404).send({
+          message: 'Users PostVotes Not Found',
+        });
+      }
+      return res.status(200).send(vote);
+    })
+    .catch(error => res.status(400).send(error));
+},
+retrieve(req, res) {
+  const postId = req.params.postId;
+  const authorId = req.params.authorId;
+  return PostVote
+    .findOne({
+      where: {
+        authorId: authorId,
+        postId: postId,
+      }
+    })
+    .then(vote => {
+      if (!vote) {
+        return res.status(404).send({
+          message: 'PostVote Not Found',
+        });
+      }
+      return res.status(200).send(vote);
+    })
+    .catch(error => res.status(400).send(error));
+},
+
+//////
+
   update(req, res) {
     return PostVote
       .find({

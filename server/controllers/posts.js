@@ -33,12 +33,17 @@ module.exports = {
           model: User,
           as: 'author',
           attributes: ['nickname'],
+        }, {
+          model: PostVote,
+          as: 'postVotes',
+          attributes: ['vote'],
         }],
       })
       .then(posts => res.status(200).send(posts))
       .catch(error => res.status(400).send(error));
   },
   retrieve(req, res) {
+    const postId = req.params.postId;
     return Post
       .findById(req.params.postId, {
         include: [{
@@ -57,12 +62,11 @@ module.exports = {
           model: PostVote,
           as: 'postVotes',
           attributes: ['vote'],
-          //attributes: [[db.sequelize.fn('SUM', db.sequelize.col('postVotes.vote')), 'votes']],
+          //attributes: [[db.sequelize.fn('COUNT', PostVote.sequelize.col('postVotes.vote')), 'TotalVotes']],
         },
-      ], /*
-      attributes: { include: [[db.sequelize.query(`SELECT SUM("vote") FROM "PostVotes"
-WHERE "PostVotes"."postId" = ${req.params.postId};`
-, { type: db.sequelize.QueryTypes.SELECT}), "thisPostsVotes"]] }, */
+      ],
+      //attributes: { include: [[db.sequelize.fn('COUNT', db.sequelize.col('postVotes.vote')), 'TotalVotes']] },
+      //group: ['postVotes.vote'],
       })
       .then(post => {
         if (!post) {

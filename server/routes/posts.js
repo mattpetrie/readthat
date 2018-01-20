@@ -10,6 +10,7 @@ router.put('/:postId', postsController.update);
 router.delete('/:postId', postsController.destroy);
 
 router.post('/:postId/votes', postVotesController.create);
+router.get('/:postId/votes/:authorId', postVotesController.retrieve);
 
 router.post('/:postId/comments', postCommentsController.create);
 router.put('/:postId/comments/:postCommentId', postCommentsController.update);
