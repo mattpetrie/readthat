@@ -2,6 +2,8 @@ import React, { Component } from 'react';
 import Post from './Post';
 import AddPostContainer from './containers/AddPostContainer'
 import { getPostsData } from '../api/posts';
+import { getUserData } from '../api/users';
+import { getUsersPostVotes } from '../api/votes';
 import { getProfile, isLoggedIn } from '../utils/AuthService';
 
 class Posts extends Component {
@@ -15,7 +17,14 @@ class Posts extends Component {
   componentWillMount() {
     this.getPosts();
     if (isLoggedIn()) {
-      this.props.onGetUserFromServer(getProfile());
+      const profile = getProfile();
+      //this.props.onGetUserFromServer(profile);
+      getUserData(profile.authorId).then(data => {
+        console.log(data)
+        this.props.onGetUserFromServer(data)
+      });
+      getUsersPostVotes(profile.authorId)
+        .then(postVotes => this.props.onGetUsersPostVotesFromServer(postVotes));
     } else {
       this.props.onUnmountUser();
     }

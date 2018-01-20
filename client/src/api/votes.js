@@ -11,4 +11,4 @@ const getUserVoteForPost = (postId, authorId) => axios.get(`${BASE_URL}/api/post
   { headers: { Authorization: `Bearer ${getAccessToken()}` }})
   .then(response => response.data)
 
-export { getUserVoteForPost };
+export { getUsersPostVotes, getUserVoteForPost };

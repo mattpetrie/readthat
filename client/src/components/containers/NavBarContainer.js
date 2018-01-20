@@ -4,7 +4,7 @@ import NavBar from '../NavBar';
 import * as actions from '../../redux/actions.js';
 
 const mapStateToProps = (state) => ({
-  currentUser: state.currentUser,
+  profile: state.currentUser.profile,
 });
 
 const mapDispatchToProps = (dispatch) => ({

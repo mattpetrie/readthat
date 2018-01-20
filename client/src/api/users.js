@@ -2,7 +2,7 @@ import axios from 'axios';
 import { BASE_URL } from '../constants';
 import { getAccessToken } from '../utils/AuthService';
 
-const getUserData = (authorId) => axios.get(`${BASE_URL}/api/posts/${authorId}`,
+const getUserData = (authorId) => axios.get(`${BASE_URL}/api/users/${authorId}`,
   { headers: { Authorization: `Bearer ${getAccessToken()}` }})
   .then(response => response.data);
 

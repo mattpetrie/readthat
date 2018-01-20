@@ -1,14 +1,14 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import { login, logout, isLoggedIn, getProfile } from '../utils/AuthService';
-//logout(history);
+
 const NavBar = ({
-  currentUser,
+  profile,
   history,
   onUnmountUser,
   onGetUserFromServer,
 }) => {
-  if (!currentUser.authorId && isLoggedIn()) {
+  if (!profile.authorId && isLoggedIn()) {
     onGetUserFromServer(getProfile());
   }
   return (
@@ -31,13 +31,13 @@ const NavBar = ({
             Log In
           </button>}
       </li>
-      {currentUser.picture ?
+      {profile.picture ?
         <li className='avatar'>
-          <img src={currentUser.picture}  alt='avatar'/>
+          <img src={profile.picture}  alt='avatar'/>
         </li> : '' }
-      {currentUser.nickname ?
+      {profile.nickname ?
         <li className='username'>
-          <p>{currentUser.nickname}</p>
+          <p>{profile.nickname}</p>
         </li> : '' }
     </ul>
   </div>
