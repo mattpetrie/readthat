@@ -1,12 +1,17 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
-import { login, logout, isLoggedIn } from '../utils/AuthService';
+import { login, logout, isLoggedIn, getProfile } from '../utils/AuthService';
 //logout(history);
 const NavBar = ({
   currentUser,
   history,
   onUnmountUser,
-}) =>
+  onGetUserFromServer,
+}) => {
+  if (!currentUser.authorId && isLoggedIn()) {
+    onGetUserFromServer(getProfile());
+  }
+  return (
   <div className="navbar">
     <ul>
       <li><Link to='/'>Home</Link></li>
@@ -36,5 +41,6 @@ const NavBar = ({
         </li> : '' }
     </ul>
   </div>
+)}
 
 export default NavBar;

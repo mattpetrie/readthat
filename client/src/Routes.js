@@ -10,6 +10,7 @@ import Authorized from './hocs/Authorized';
 const Routes = () =>
 <div>
   <NavBarContainer />
+  <br /><br /><br />
   <Switch>
     <Route exact path='/' component={PostsContainer} />
     <Route path='/todos' component={Authorized(TodosContainer)} />

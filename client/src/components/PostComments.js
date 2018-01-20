@@ -25,7 +25,7 @@ class PostComments extends Component {
     return (
       <div>
         <Post post={currentPost} commentsLink={false} key={currentPost.id} />
-        <h2>Comments</h2>
+        <h3>Comments</h3>
         <div className="post-comments">
           { currentPost.postComments ? currentPost.postComments // WHY CONDITIONAL NECESSARY?
             .sort((a, b) => a.id - b.id)
