@@ -1,20 +1,16 @@
 import React from 'react';
 
 const PostVoter = ({
-  userLoggedIn,
-  UserVote,
-  postVotes,
+  currentUserVote,
+  post,
 }) => {
 
-  const voter =
-
 return (
-  <div className="postvoter">
-    <div>
-      {voter}
-    </div>
-    <div>
-      {postVotes}
+  <div className="voter">
+    <div className="vote-buttons">
+      <button>▲</button>
+      <span>{post.postVotes}</span>
+      <button>▼</button>
     </div>
   </div>
 )}

@@ -92,10 +92,6 @@ h3 {
   color: lightGrey;
 }
 
-.todos {
-  margin-left: 20px;
-}
-
 .new {
   color: #aaa;
 }
@@ -104,11 +100,45 @@ h3 {
   text-align: center;
 }
 
+
 .post {
   padding: 20px;
   border: 1px solid black;
   margin: 5px;
+  display: grid;
+  grid-template-columns: 60px auto;
 }
+
+.voter {
+  grid-column: 1;
+  height: 70px;
+  width: 40px;
+}
+
+.voter button {
+    border: none;
+    color: black;
+    text-align: center;
+    text-decoration: none;
+    font-size: 20px;
+    display:block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.voter button:hover {
+    color: red;
+}
+
+.vote-buttons {
+  height: 100%;
+  text-align: center;
+  display:flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
+
+
 
 .post-title {
   font-style: bold;

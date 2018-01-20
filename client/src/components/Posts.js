@@ -20,7 +20,7 @@ class Posts extends Component {
     return (
       <div className="posts">
         <h1 className="title">Posts</h1>
-        {this.props.posts.sort((a, b) => a.id - b.id).map(post =>
+        {this.props.posts.sort((a, b) => b.postVotes - a.postVotes).map(post =>
           <PostContainer post={post} commentsLink={true} key={post.id}/>)}
         <br /><br />
         {isLoggedIn() ?
