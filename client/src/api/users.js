@@ -10,6 +10,6 @@ const addUserToServer = (user) => axios.post(`${BASE_URL}/api/users`,
   { user },
   { headers: { Authorization: `Bearer ${getAccessToken()}` },
   })
-  .then(response => response.data);
+  .then(response => response.data); // Catch error and update?
 
 export { getUserData, addUserToServer };

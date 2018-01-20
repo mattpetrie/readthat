@@ -1,7 +1,6 @@
 import React from 'react';
 import timeago from 'timeago.js';
 import { Link } from 'react-router-dom';
-import { getTotalVotes } from '../utils/postUtils';
 
 const Post = ({
   post,

@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import Post from './Post';
+import PostContainer from './containers/PostContainer'
 import PostComment from './PostComment';
 import AddPostCommentContainer from './containers/AddPostCommentContainer';
 import { getPostData } from '../api/posts';
@@ -24,7 +24,7 @@ class PostComments extends Component {
     }
     return (
       <div>
-        <Post post={currentPost} commentsLink={false} key={currentPost.id} />
+        <PostContainer post={currentPost} commentsLink={false} key={currentPost.id} />
         <h3>Comments</h3>
         <div className="post-comments">
           { currentPost.postComments ? currentPost.postComments // WHY CONDITIONAL NECESSARY?

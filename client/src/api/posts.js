@@ -1,7 +1,6 @@
 import axios from 'axios';
 import { BASE_URL } from '../constants';
-import { getAccessToken, isLoggedIn, getProfile } from '../utils/AuthService';
-import { getUserVoteForPost } from './votes';
+import { getAccessToken } from '../utils/AuthService';
 
 const getPostsData = () => axios.get(`${BASE_URL}/api/posts`,
   { headers: { Authorization: `Bearer ${getAccessToken()}` }})

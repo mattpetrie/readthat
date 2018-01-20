@@ -1,8 +1,8 @@
 import React, { Component } from 'react';
-import Post from './Post';
+import PostContainer from './containers/PostContainer'
 import AddPostContainer from './containers/AddPostContainer'
 import { getPostsData } from '../api/posts';
-import { getProfile, isLoggedIn } from '../utils/AuthService';
+import { isLoggedIn } from '../utils/AuthService';
 
 class Posts extends Component {
 
@@ -21,7 +21,7 @@ class Posts extends Component {
       <div className="posts">
         <h1 className="title">Posts</h1>
         {this.props.posts.sort((a, b) => a.id - b.id).map(post =>
-          <Post post={post} commentsLink={true} key={post.id}/>)}
+          <PostContainer post={post} commentsLink={true} key={post.id}/>)}
         <br /><br />
         {isLoggedIn() ?
           <AddPostContainer />

@@ -1,6 +1,6 @@
 import axios from 'axios';
 import { BASE_URL } from '../constants';
-import { getAccessToken, isLoggedIn, getProfile } from '../utils/AuthService';
+import { getAccessToken } from '../utils/AuthService';
 
 const getUsersPostVotes = (authorId) => axios.get(`${BASE_URL}/api/users/${authorId}/postvotes`,
   { headers: { Authorization: `Bearer ${getAccessToken()}` }})

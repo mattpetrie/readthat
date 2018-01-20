@@ -1,7 +1,6 @@
 import React, { Component } from 'react';
 import { Link } from 'react-router-dom';
 import { getUserData } from '../api/users';
-import { getUsersPostVotes } from '../api/votes';
 import { login, logout, isLoggedIn, getProfile } from '../utils/AuthService';
 
 class NavBar extends Component {
@@ -10,7 +9,6 @@ class NavBar extends Component {
     if (isLoggedIn()) {
       const profile = getProfile();
       getUserData(profile.authorId).then(data => {
-        console.log(data)
         this.props.onGetUserFromServer(data)
       });
     } else {
@@ -23,7 +21,6 @@ class NavBar extends Component {
       currentUser,
       history,
       onUnmountUser,
-      onGetUserFromServer,
     } = this.props;
 
     return (

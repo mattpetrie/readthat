@@ -20,7 +20,7 @@ var auth = new auth0.WebAuth({
 
 export function getProfile() {
   const dataNamespace = 'https://www.readthat.io/';
-  const dataParams = ['email', 'nickname', 'picture'];
+  const dataParams = ['email', 'nickname', 'picture', 'first', 'last'];
   let profile = {};
   const token = getDecodedIdToken();
   dataParams.forEach(param => {
