@@ -82,7 +82,7 @@ const currentPost = (state = {}, action) => {
   }
 };
 
-const profile = (state = {}, action) => {
+const currentUser = (state = {}, action) => {
   switch (action.type) {
     case 'GET_USER_FROM_SERVER':
       return action.user;
@@ -92,23 +92,6 @@ const profile = (state = {}, action) => {
       return state;
   }
 };
-
-const postVotes = (state = [], action) => {
-  switch (action.type) {
-    case 'GET_USER_VOTES_FROM_SERVER':
-      return action.postVotes;
-    case 'REMOVE_USER_VOTES':
-        return [];
-    default:
-      return state;
-  }
-};
-
-
-const currentUser = combineReducers({
-  profile,
-  postVotes,
- });
 
 export const masterReducer = combineReducers({
   todos,

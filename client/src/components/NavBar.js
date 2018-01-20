@@ -9,13 +9,10 @@ class NavBar extends Component {
   componentWillMount() {
     if (isLoggedIn()) {
       const profile = getProfile();
-      //this.props.onGetUserFromServer(profile);
       getUserData(profile.authorId).then(data => {
         console.log(data)
         this.props.onGetUserFromServer(data)
       });
-      getUsersPostVotes(profile.authorId)
-        .then(postVotes => this.props.onGetUsersPostVotesFromServer(postVotes));
     } else {
       this.props.onUnmountUser();
     }
@@ -23,14 +20,12 @@ class NavBar extends Component {
 
   render() {
     const {
-      profile,
+      currentUser,
       history,
       onUnmountUser,
       onGetUserFromServer,
     } = this.props;
-    if (!profile.authorId && isLoggedIn()) {
-      onGetUserFromServer(getProfile());
-    }
+
     return (
       <div className="navbar">
         <ul>
@@ -51,13 +46,13 @@ class NavBar extends Component {
                 Log In
               </button>}
           </li>
-          {profile.picture ?
+          {currentUser.picture ?
             <li className='avatar'>
-              <img src={profile.picture}  alt='avatar'/>
+              <img src={currentUser.picture}  alt='avatar'/>
             </li> : '' }
-          {profile.nickname ?
+          {currentUser.nickname ?
             <li className='username'>
-              <p>{profile.nickname}</p>
+              <p>{currentUser.nickname}</p>
             </li> : '' }
         </ul>
       </div>

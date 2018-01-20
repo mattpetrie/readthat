@@ -34,11 +34,6 @@ export const getPostFromServer = (post) => ({
   post,
 })
 
-export const getUsersPostVotesFromServer = (postVotes) => ({
-  type: 'GET_USER_VOTES_FROM_SERVER',
-  postVotes,
-})
-
 export const getUserFromServer = (user) => ({
   type: 'GET_USER_FROM_SERVER',
   user,
