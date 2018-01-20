@@ -13,9 +13,6 @@ const mapDispatchToProps = (dispatch) => ({
   onGetUserFromServer(user) {
     dispatch(actions.getUserFromServer(user));
   },
-  onGetUsersPostVotesFromServer(postVotes) {
-    dispatch(actions.getUsersPostVotesFromServer(postVotes));
-  },
   onUnmountUser() {
     dispatch(actions.unmountUser());
   },

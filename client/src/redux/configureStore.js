@@ -11,16 +11,6 @@ const configureStore = () => {
     window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__(),
   );
 
-  /*
-  store.subscribe(throttle(() => {
-      getPostsData().then(posts => {
-        if (store.getState().posts.filter(post => post.new).length > 0) {
-          store.dispatch(actions.populatePostsFromServer(posts));
-        }
-      });
-    }, 10000)
-  ); */
-
   store.subscribe(throttle(() => {
     if (store.getState().posts.filter(post => post.new).length > 0) {
       getPostsData().then(posts => {
