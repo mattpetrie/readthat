@@ -4,6 +4,7 @@ import * as actions from '../../redux/actions.js';
 
 const mapStateToProps = (state, ownProps) => ({
   post: ownProps.post,
+  currentUserVote: state.currentUser.postVotes ? state.currentUser.postVotes.find(vote => vote.postId === ownProps.post.id) : null,
 });
 
 const mapDispatchToProps = (dispatch) => ({

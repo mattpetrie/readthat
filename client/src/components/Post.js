@@ -5,6 +5,7 @@ import { Link } from 'react-router-dom';
 const Post = ({
   post,
   commentsLink,
+  currentUserVote,
 }) => {
   if (!post) {
     return <div>Loading...</div>
@@ -41,6 +42,7 @@ const Post = ({
         </Link>
         : null }
         <br />VOTES: {post.postVotes}
+        <br />{currentUserVote ? currentUserVote.vote : null}
     </div>
 )}
 
