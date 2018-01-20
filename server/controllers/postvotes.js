@@ -22,16 +22,17 @@ list(req, res) {
         authorId: authorId,
       }
     })
-    .then(vote => {
-      if (!vote) {
+    .then(votes => {
+      if (!votes) {
         return res.status(404).send({
           message: 'Users PostVotes Not Found',
         });
       }
-      return res.status(200).send(vote);
+      return res.status(200).send(votes);
     })
     .catch(error => res.status(400).send(error));
 },
+
 retrieve(req, res) {
   const postId = req.params.postId;
   const authorId = req.params.authorId;
