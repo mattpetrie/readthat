@@ -11,6 +11,7 @@ const configureStore = () => {
     window.__REDUX_DEVTOOLS_EXTENSION__ && window.__REDUX_DEVTOOLS_EXTENSION__(),
   );
 
+  /*
   store.subscribe(throttle(() => {
     if (store.getState().posts.filter(post => post.new).length > 0) {
       getPostsData().then(posts => {
@@ -19,6 +20,7 @@ const configureStore = () => {
       };
     }, 10000)
   );
+  */
 
   return store;
 };
