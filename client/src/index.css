@@ -10,6 +10,10 @@ h3 {
   font-weight: bold;
 }
 
+button:focus {
+  outline: 0;
+}
+
 .navbar {
   width: 100%;
   position: fixed;
@@ -126,8 +130,16 @@ h3 {
     margin-right: auto;
 }
 
+.voter .current-vote {
+  color: teal;
+}
+
 .voter button:hover {
-    color: red;
+  opacity: .7;
+}
+
+.voter button:disabled {
+  color: lightGrey;
 }
 
 .vote-buttons {

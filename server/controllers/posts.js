@@ -49,24 +49,21 @@ module.exports = {
         include: [{
           model: PostComment,
           as: 'postComments',
-          include: [{
+            include: [{
+              model: User,
+              as: 'author',
+              attributes: ['nickname'],
+            }],
+          }, {
             model: User,
             as: 'author',
             attributes: ['nickname'],
-          }],
-        }, {
-          model: User,
-          as: 'author',
-          attributes: ['nickname'],
-        }, {
-          model: PostVote,
-          as: 'postVotes',
-          attributes: ['vote'],
-          //attributes: [[db.sequelize.fn('COUNT', PostVote.sequelize.col('postVotes.vote')), 'TotalVotes']],
-        },
-      ],
-      //attributes: { include: [[db.sequelize.fn('COUNT', db.sequelize.col('postVotes.vote')), 'TotalVotes']] },
-      //group: ['postVotes.vote'],
+          }, {
+            model: PostVote,
+            as: 'postVotes',
+            attributes: ['vote'],
+          },
+        ],
       })
       .then(post => {
         if (!post) {

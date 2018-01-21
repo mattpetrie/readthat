@@ -2,66 +2,64 @@ const PostVote = require('../models').PostVote
 
 module.exports = {
   create(req, res) {
-    const { vote, authorId, postId } = req.body.postVote;
+    const { vote, authorId } = req.body.postVote;
     return PostVote
       .create({
         vote,
         authorId,
-        postId: req.params.postId,
+        postId: parseInt(req.params.postId, 10),
       })
       .then(postVote => res.status(201).send(postVote))
       .catch(error => res.status(400).send(error));
   },
 
-//////
-list(req, res) {
-  const authorId = req.params.authorId;
-  return PostVote
-    .findAll({
-      where: {
-        authorId: authorId,
-      }
-    })
-    .then(votes => {
-      if (!votes) {
-        return res.status(404).send({
-          message: 'Users PostVotes Not Found',
-        });
-      }
-      return res.status(200).send(votes);
-    })
-    .catch(error => res.status(400).send(error));
-},
+  list(req, res) {
+    const authorId = req.params.authorId;
+    return PostVote
+      .findAll({
+        where: {
+          authorId: authorId,
+        }
+      })
+      .then(votes => {
+        if (!votes) {
+          return res.status(404).send({
+            message: 'Users PostVotes Not Found',
+          });
+        }
+        return res.status(200).send(votes);
+      })
+      .catch(error => res.status(400).send(error));
+  },
 
-retrieve(req, res) {
-  const postId = req.params.postId;
-  const authorId = req.params.authorId;
-  return PostVote
-    .findOne({
-      where: {
-        authorId: authorId,
-        postId: postId,
-      }
-    })
-    .then(vote => {
-      if (!vote) {
-        return res.status(404).send({
-          message: 'PostVote Not Found',
-        });
-      }
-      return res.status(200).send(vote);
-    })
-    .catch(error => res.status(400).send(error));
-},
-
-//////
+  retrieve(req, res) {
+    const postId = req.params.postId;
+    const authorId = req.params.authorId;
+    return PostVote
+      .findOne({
+        where: {
+          authorId: authorId,
+          postId: postId,
+        }
+      })
+      .then(vote => {
+        if (!vote) {
+          return res.status(404).send({
+            message: 'PostVote Not Found',
+          });
+        }
+        return res.status(200).send(vote);
+      })
+      .catch(error => res.status(400).send(error));
+  },
 
   update(req, res) {
+    const { authorId, vote } = req.body.postVote;
     return PostVote
-      .find({
+      .findOne({
           where: {
-            id: req.params.postVoteId,
-            postId: req.params.postId,
+            authorId,
+            postId: parseInt(req.params.postId, 10),
           },
         })
       .then(postVote => {
@@ -72,7 +70,9 @@ retrieve(req, res) {
         }
 
         return postVote
-          .update(req.body, { fields: Object.keys(req.body) })
+          .update({
+            vote,
+          })
           .then(updatedPostVote => res.status(200).send(updatedPostVote))
           .catch(error => res.status(400).send(error));
       })

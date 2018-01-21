@@ -1,11 +1,12 @@
 import React from 'react';
 import timeago from 'timeago.js';
 import { Link } from 'react-router-dom';
-import PostVoter from './PostVoter'
+import PostVoterContainer from './containers/PostVoterContainer';
 
 const Post = ({
   post,
   commentsLink,
+  authorId,
   currentUserVote,
 }) => {
   if (!post) {
@@ -13,7 +14,11 @@ const Post = ({
   }
   return (
     <div className="post">
-      <PostVoter post={post} currentUserVote={currentUserVote} />
+      <PostVoterContainer
+        post={post}
+        authorId={authorId}
+        currentUserVote={currentUserVote}
+      />
       <div>
         { post.url ?
           <div>
@@ -44,7 +49,6 @@ const Post = ({
             <div className="comment-count">{post.postComments ? post.postComments.length : '0'} comments</div>
           </Link>
           : null }
-        <br />{currentUserVote ? currentUserVote.vote : null}
       </div>
     </div>
 )}

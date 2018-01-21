@@ -10,12 +10,6 @@ const mapDispatchToProps = (dispatch) => ({
   onPopulatePostsFromServer(posts) {
     dispatch(actions.populatePostsFromServer(posts));
   },
-  onGetUserFromServer(user) {
-    dispatch(actions.getUserFromServer(user));
-  },
-  onUnmountUser() {
-    dispatch(actions.unmountUser());
-  },
 });
 
 const PostsContainer = connect(

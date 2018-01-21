@@ -30,3 +30,9 @@ export const getUserFromServer = (user) => ({
 export const unmountUser = () => ({
   type: 'REMOVE_USER_INFO',
 })
+
+export const handlePostVote = (vote, difference) => ({
+  type: 'HANDLE_POST_VOTE',
+  vote,
+  difference,
+})
