@@ -13,6 +13,15 @@ const PostVoter = ({
     updatePostVoteToServer(post.id, authorId, voteValue)
     : addPostVoteToServer(post.id, authorId, voteValue);
 
+  const handleVote = (value) => {
+    return(() => {
+      handleVoteOnServer(currentUserVote === value ? 0 : value).then(vote => {
+        const difference = parseInt(vote.vote - currentUserVote, 10)
+        handlePostVoteInStore(vote, difference)
+      });
+    })
+  }
+
   return (
     <div className="voter">
       <div className="vote-buttons">
@@ -20,20 +29,7 @@ const PostVoter = ({
           className={!authorId ? 'no-user'
             : ((currentUserVote > 0) ? 'current-vote' : '')}
           disabled={!authorId ? true : false}
-          onClick={currentUserVote > 0 ?
-            () => {
-              handleVoteOnServer(0).then(vote => {
-                const difference = parseInt(vote.vote - currentUserVote, 10)
-                handlePostVoteInStore(vote, difference)
-              });
-            }
-            : () => {
-              handleVoteOnServer(1).then(vote => {
-                const difference = parseInt(vote.vote - currentUserVote, 10)
-                handlePostVoteInStore(vote, difference)
-              });
-            }
-          }>
+          onClick={handleVote(1)}>
             ▲
         </button>
         <span>{post.postVotes}</span>
@@ -41,20 +37,7 @@ const PostVoter = ({
           className={!authorId ? 'no-user'
             : ((currentUserVote < 0) ? 'current-vote' : '')}
           disabled={!authorId ? true : false}
-          onClick={currentUserVote < 0 ?
-            () => {
-              handleVoteOnServer(0).then(vote => {
-                const difference = parseInt(vote.vote - currentUserVote, 10)
-                handlePostVoteInStore(vote, difference)
-              });
-            }
-            : () => {
-              handleVoteOnServer(-1).then(vote => {
-                const difference = parseInt(vote.vote - currentUserVote, 10)
-                handlePostVoteInStore(vote, difference)
-              });
-            }
-          }>
+          onClick={handleVote(-1)}>
             ▼
         </button>
       </div>
