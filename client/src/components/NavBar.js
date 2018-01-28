@@ -5,15 +5,25 @@ import { login, logout, isLoggedIn, getProfile } from '../utils/AuthService';
 
 class NavBar extends Component {
 
-  componentWillMount() {
+  isUserLoggedIn() {
     if (isLoggedIn()) {
       const profile = getProfile();
-      getUserData(profile.authorId).then(data => {
-        this.props.onGetUserFromServer(data)
-      });
-    } else {
+      if (profile.authorId !== this.props.currentUser.authorId) {
+        getUserData(profile.authorId).then(data => {
+          this.props.onGetUserFromServer(data)
+        });
+      }
+    } else if (!isLoggedIn() && this.props.currentUser.authorId) {
       this.props.onUnmountUser();
     }
+  }
+
+  componentWillMount() {
+    this.isUserLoggedIn();
+  }
+
+  componentWillUpdate() {
+    this.isUserLoggedIn();
   }
 
   render() {
