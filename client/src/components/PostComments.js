@@ -22,15 +22,17 @@ class PostComments extends Component {
     if (!currentPost) {
       return <div>Loading...</div>
     }
+    const postComments = currentPost.postComments;
     return (
       <div>
         <PostContainer post={currentPost} commentsLink={false} key={currentPost.id} />
         <h3>Comments</h3>
         <div className="post-comments">
-          { currentPost.postComments ? currentPost.postComments // WHY CONDITIONAL NECESSARY?
+          { postComments ? postComments // WHY CONDITIONAL NECESSARY?
+            .filter(comment => comment.parent === null)
             .sort((a, b) => a.id - b.id)
             .map(comment =>
-              <PostComment comment={comment} key={comment.id}/>)
+              <PostComment comment={comment} postComments={postComments} key={comment.id}/>)
             : ''
           }
         </div>

@@ -104,6 +104,14 @@ button:focus {
   text-align: center;
 }
 
+.indent-comments {
+  display: grid;
+  grid-template-columns: 20px auto;
+}
+
+.indent {
+  grid-column: 1;
+}
 
 .post {
   padding: 20px;
