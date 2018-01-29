@@ -21,6 +21,10 @@ module.exports = (sequelize, DataTypes) => {
       as: 'parentComment',
       onDelete: 'CASCADE',
     });
+    PostComment.hasMany(models.CommentVote, {
+      foreignKey: 'commentId',
+      as: 'commentVotes',
+    });
     PostComment.hasMany(models.PostComment, {
       foreignKey: 'id',
       as: 'children',

@@ -1,5 +1,6 @@
 const Post = require('../models').Post;
 const PostComment = require('../models').PostComment;
+const CommentVote = require('../models').CommentVote;
 const User = require('../models').User;
 const PostVote = require('../models').PostVote;
 const db = require('../models/index');
@@ -28,6 +29,9 @@ module.exports = {
             model: User,
             as: 'author',
             attributes: ['nickname'],
+          }, {
+            model: CommentVote,
+            as: 'commentVotes',
           }],
         }, {
           model: User,
@@ -53,6 +57,9 @@ module.exports = {
               model: User,
               as: 'author',
               attributes: ['nickname'],
+            }, {
+              model: CommentVote,
+              as: 'commentVotes',
             }],
           }, {
             model: User,
