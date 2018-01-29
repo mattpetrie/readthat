@@ -8,13 +8,15 @@ const PostComment = ({
 <div>
   <div className="comment">
     {comment.body}
-    {comment.author ?
+    {
       <div className="byline">
-      <br />
-      <span>
-        Submitted by {comment.author.nickname} {timeago().format(comment.createdAt)}
-      </span>
-    </div> : '' }
+        <br />
+        <span>
+          Submitted by {comment.author ? comment.author.nickname : 'you'}
+          {' ' + timeago().format(comment.createdAt)}
+        </span>
+      </div>
+    }
   </div>
   <div className="indent-comments">
     <div className="indent"></div>
