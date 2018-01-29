@@ -22,7 +22,14 @@ module.exports = {
         },
       },
       parent: {
-        type: Sequelize.STRING
+        type: Sequelize.INTEGER,
+        allowNull: true,
+        onDelete: 'CASCADE',
+        references: {
+          model: 'PostComments',
+          key: 'id',
+          as: 'postCommentId',
+        },
       },
       createdAt: {
         allowNull: false,
