@@ -2,6 +2,7 @@ const User = require('../models').User;
 const Post = require('../models').Post;
 const PostVote = require('../models').PostVote;
 const PostComment = require('../models').PostComment;
+const CommentVote = require('../models').CommentVote;
 
 module.exports = {
   create(req, res) {
@@ -56,6 +57,9 @@ module.exports = {
           }, {
           model: PostVote,
           as: 'postVotes',
+          }, {
+          model: CommentVote,
+          as: 'commentVotes',
           }],
       })
       .then(user => {

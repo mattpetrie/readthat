@@ -158,7 +158,49 @@ button:focus {
   justify-content: space-between;
 }
 
+.comment-voter {
+  margin-top: -5px;
+  grid-column: 1;
+  height: 50px;
+  width: 40px;
+  font-size: 12px;
+}
 
+.comment-voter-vote {
+  line-height: 10px;
+}
+
+.comment-voter button {
+    border: none;
+    background-color: inherit;
+    color: black;
+    text-align: center;
+    text-decoration: none;
+    font-size: 16px;
+    display:block;
+    margin-left: auto;
+    margin-right: auto;
+}
+
+.comment-voter .current-vote {
+  color: teal;
+}
+
+.comment-voter button:hover {
+  opacity: .7;
+}
+
+.comment-voter button:disabled {
+  color: lightGrey;
+}
+
+.comment-vote-buttons {
+  height: 100%;
+  text-align: center;
+  display:flex;
+  flex-direction: column;
+  justify-content: space-between;
+}
 
 .post-title {
   font-style: bold;
@@ -215,4 +257,6 @@ button:focus {
   padding: 10px 15px 5px 15px;
   background-color: #F5F5F5;
   margin: 5px;
+  display: grid;
+  grid-template-columns: 60px auto;
 }

@@ -36,3 +36,9 @@ export const handlePostVote = (vote, difference) => ({
   vote,
   difference,
 })
+
+export const handleCommentVote = (vote, difference) => ({
+  type: 'HANDLE_COMMENT_VOTE',
+  vote,
+  difference,
+})

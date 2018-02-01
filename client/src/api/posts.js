@@ -6,6 +6,12 @@ const getPostsData = () => axios.get(`${BASE_URL}/api/posts`,
   { headers: { Authorization: `Bearer ${getAccessToken()}` }})
   .then(response => response.data)
   .then(posts => posts.map(post => {
+        post.postComments = post.postComments.map(comment => {
+          comment.commentVotes = comment.commentVotes.reduce(
+            ((accumulator, vote) => accumulator + vote.vote),
+            0);
+          return comment;
+        });
         post.postVotes = post.postVotes.reduce(
           ((accumulator, vote) => accumulator + vote.vote),
           0);
@@ -18,6 +24,12 @@ const getPostData = (postId) => axios.get(`${BASE_URL}/api/posts/${postId}`,
   { headers: { Authorization: `Bearer ${getAccessToken()}` }})
   .then(response => response.data)
   .then(post => {
+    post.postComments = post.postComments.map(comment => {
+      comment.commentVotes = comment.commentVotes.reduce(
+        ((accumulator, vote) => accumulator + vote.vote),
+        0);
+      return comment;
+    });
     post.postVotes = post.postVotes.reduce(
       ((accumulator, vote) => accumulator + vote.vote),
       0);

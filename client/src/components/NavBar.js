@@ -27,6 +27,7 @@ class NavBar extends Component {
   }
 
   render() {
+    this.isUserLoggedIn();
     const {
       currentUser,
       history,

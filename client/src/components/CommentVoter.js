@@ -1,41 +1,42 @@
 import React from 'react';
-import { addPostVoteToServer, updatePostVoteToServer } from '../api/votes';
+import { addCommentVoteToServer, updateCommentVoteToServer } from '../api/votes';
 
 
-const PostVoter = ({
+const CommentVoter = ({
   authorId,
   currentUserVote,
-  currentUserVoteId,
-  post,
-  handlePostVoteInStore
+  comment,
+  handleCommentVoteInStore
 }) => {
-  const handleVoteOnServer = (voteValue) => currentUserVoteId ?
-    updatePostVoteToServer(post.id, authorId, voteValue)
-    : addPostVoteToServer(post.id, authorId, voteValue);
+  const currentUserVoteValue = currentUserVote ? currentUserVote.vote : 0;
+  console.log(currentUserVoteValue);
+
+  const handleVoteOnServer = (voteValue) => currentUserVote ?
+    updateCommentVoteToServer(comment.postId, comment.id, authorId, voteValue)
+    : addCommentVoteToServer(comment.postId, comment.id, authorId, voteValue);
 
   const handleVote = (value) => {
     return(() => {
-      handleVoteOnServer(currentUserVote === value ? 0 : value).then(vote => {
-        const difference = parseInt(vote.vote - currentUserVote, 10)
-        handlePostVoteInStore(vote, difference)
+      handleVoteOnServer(currentUserVoteValue === value ? 0 : value).then(vote => {
+        const difference = parseInt(vote.vote - currentUserVoteValue, 10);
+        handleCommentVoteInStore(vote, difference)
       });
     })
   }
-
   return (
-    <div className="voter">
+    <div className="comment-voter">
       <div className="vote-buttons">
         <button
           className={!authorId ? 'no-user'
-            : ((currentUserVote > 0) ? 'current-vote' : '')}
+            : ((currentUserVoteValue > 0) ? 'current-vote' : '')}
           disabled={!authorId ? true : false}
           onClick={handleVote(1)}>
             ▲
         </button>
-        <span>{post.postVotes}</span>
+        <span className="comment-voter-vote">{comment.commentVotes}</span>
         <button
           className={!authorId ? 'no-user'
-            : ((currentUserVote < 0) ? 'current-vote' : '')}
+            : ((currentUserVoteValue < 0) ? 'current-vote' : '')}
           disabled={!authorId ? true : false}
           onClick={handleVote(-1)}>
             ▼
@@ -46,4 +47,4 @@ const PostVoter = ({
 }
 
 
-export default PostVoter;
+export default CommentVoter;

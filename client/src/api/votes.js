@@ -23,4 +23,23 @@ const updatePostVoteToServer = (postId, authorId, vote) => axios.put(`${BASE_URL
   })
   .then(response => response.data);
 
-export { getUsersPostVotes, getUserVoteForPost, addPostVoteToServer, updatePostVoteToServer };
+const addCommentVoteToServer = (postId, commentId, authorId, vote) => axios.post(`${BASE_URL}/api/posts/${postId}/comments/${commentId}/votes`,
+  { commentVote: { authorId, vote }, },
+  { headers: { Authorization: `Bearer ${getAccessToken()}` },
+  })
+  .then(response => response.data);
+
+const updateCommentVoteToServer = (postId, commentId, authorId, vote) => axios.put(`${BASE_URL}/api/posts/${postId}/comments/${commentId}/votes`,
+  { commentVote: { authorId, vote }, },
+  { headers: { Authorization: `Bearer ${getAccessToken()}` },
+  })
+  .then(response => response.data);
+
+export {
+  getUsersPostVotes,
+  getUserVoteForPost,
+  addPostVoteToServer,
+  updatePostVoteToServer,
+  addCommentVoteToServer,
+  updateCommentVoteToServer
+ };

@@ -7,9 +7,36 @@ module.exports = {
       .create({
         vote,
         authorId,
+        postId: parseInt(req.params.postId, 10),
         commentId: parseInt(req.params.commentId, 10),
       })
       .then(commentVote => res.status(201).send(commentVote))
+      .catch(error => res.status(400).send(error));
+  },
+
+  update(req, res) {
+    const { authorId, vote } = req.body.commentVote;
+    return CommentVote
+      .findOne({
+          where: {
+            authorId,
+            commentId: parseInt(req.params.commentId, 10),
+          },
+        })
+      .then(commentVote => {
+        if (!commentVote) {
+          return res.status(404).send({
+            message: 'CommentVote Not Found',
+          });
+        }
+
+        return commentVote
+          .update({
+            vote,
+          })
+          .then(updatedCommentVote => res.status(200).send(updatedCommentVote))
+          .catch(error => res.status(400).send(error));
+      })
       .catch(error => res.status(400).send(error));
   },
 
@@ -49,32 +76,6 @@ module.exports = {
           });
         }
         return res.status(200).send(vote);
-      })
-      .catch(error => res.status(400).send(error));
-  },
-
-  update(req, res) {
-    const { authorId, vote } = req.body.commentVote;
-    return CommentVote
-      .findOne({
-          where: {
-            authorId,
-            commentId: parseInt(req.params.commentId, 10),
-          },
-        })
-      .then(commentVote => {
-        if (!commentVote) {
-          return res.status(404).send({
-            message: 'CommentVote Not Found',
-          });
-        }
-
-        return commentVote
-          .update({
-            vote,
-          })
-          .then(updatedCommentVote => res.status(200).send(updatedCommentVote))
-          .catch(error => res.status(400).send(error));
       })
       .catch(error => res.status(400).send(error));
   },

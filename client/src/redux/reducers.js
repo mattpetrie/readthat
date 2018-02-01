@@ -12,6 +12,17 @@ const post = (state = {}, action) => {
         }
       }
       return state;
+    case 'HANDLE_COMMENT_VOTE':
+      const commentIndex = state.postComments ? state.postComments.findIndex(comment => comment.id === action.vote.commentId) : null;
+      if (commentIndex >= 0) {
+        let newPostComments = [...state.postComments];
+        newPostComments[commentIndex].commentVotes = newPostComments[commentIndex].commentVotes + action.difference;
+        return {
+          ...state,
+          postComments: newPostComments,
+        }
+      };
+      return state;
     default:
       return state;
   }
@@ -31,6 +42,10 @@ const posts = (state = [], action) => {
         post(el, action)
       );
     case 'HANDLE_POST_VOTE':
+      return state.map(el =>
+        post(el, action)
+      );
+    case 'HANDLE_COMMENT_VOTE':
       return state.map(el =>
         post(el, action)
       );
@@ -56,6 +71,17 @@ const currentPost = (state = {}, action) => {
         }
       }
       return state;
+    case 'HANDLE_COMMENT_VOTE':
+      const commentIndex = state.postComments ? state.postComments.findIndex(comment => comment.id === action.vote.commentId) : null;
+      if (commentIndex >= 0) {
+        let newPostComments = [...state.postComments];
+        newPostComments[commentIndex].commentVotes = newPostComments[commentIndex].commentVotes + action.difference;
+        return {
+          ...state,
+          postComments: newPostComments,
+        };
+      }
+      return state;
     default:
       return state;
   }
@@ -79,6 +105,17 @@ const currentUser = (state = {}, action) => {
           ...state,
           postVotes: newPostVotes,
         };
+    case 'HANDLE_COMMENT_VOTE':
+      let newCommentVotes = [...state.commentVotes];
+      const commentVoteIndex = newCommentVotes.findIndex(vote => vote.id === action.vote.id);
+      if (commentVoteIndex >= 0) {
+        newCommentVotes.splice(commentVoteIndex, 1);
+      }
+      newCommentVotes.push(action.vote);
+      return {
+        ...state,
+        commentVotes: newCommentVotes,
+      };
     default:
       return state;
   }
