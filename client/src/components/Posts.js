@@ -5,15 +5,15 @@ import { getPostsData } from '../api/posts';
 import { isLoggedIn } from '../utils/AuthService';
 
 class Posts extends Component {
-
-  getPosts() {
-    getPostsData().then(posts => {
-      this.props.onPopulatePostsFromServer(posts.sort((a, b) => b.postVotes - a.postVotes));
-    });
-  }
-
   componentWillMount() {
     this.getPosts();
+  }
+
+  getPosts() {
+    getPostsData().then((posts) => {
+      this.props.onPopulatePostsFromServer(
+        posts.sort((a, b) => b.postVotes - a.postVotes));
+    });
   }
 
   render() {

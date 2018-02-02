@@ -6,7 +6,7 @@ import { login, logout, isLoggedIn } from '../utils/AuthService';
 
 const Home = ({
   history,
-}) =>
+}) => (
   <div className="App">
     <header className="App-header">
       <img src={logo} className="App-logo" alt="logo" />
@@ -17,12 +17,13 @@ const Home = ({
       <div>
         {
           (isLoggedIn()) ?
-            ( <button onClick={() => logout(history)}>Log out </button> )
+            (<button onClick={() => logout(history)}>Log out </button>)
             :
-            ( <button onClick={() => login()}>Log In</button> )
+            (<button onClick={() => login()}>Log In</button>)
         }
       </div>
     </div>
   </div>
+);
 
 export default Home;

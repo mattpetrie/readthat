@@ -9,41 +9,49 @@ const PostVoter = ({
   post,
   handlePostVoteInStore
 }) => {
-  const handleVoteOnServer = (voteValue) => currentUserVoteId ?
-    updatePostVoteToServer(post.id, authorId, voteValue)
-    : addPostVoteToServer(post.id, authorId, voteValue);
+  const handleVoteOnServer = (voteValue) => {
+    if (currentUserVoteId) {
+      return updatePostVoteToServer(post.id, authorId, voteValue);
+    }
+    return addPostVoteToServer(post.id, authorId, voteValue);
+  };
 
-  const handleVote = (value) => {
-    return(() => {
-      handleVoteOnServer(currentUserVote === value ? 0 : value).then(vote => {
-        const difference = parseInt(vote.vote - currentUserVote, 10)
-        handlePostVoteInStore(vote, difference)
-      });
-    })
-  }
+  const handleVote = value => () => {
+    handleVoteOnServer(currentUserVote === value ? 0 : value).then((vote) => {
+      const difference = parseInt(vote.vote - currentUserVote, 10);
+      handlePostVoteInStore(vote, difference);
+    });
+  };
+
+  const getButtonClass = (valueComparison) => {
+    if (!authorId) {
+      return 'no-user';
+    } else if (valueComparison) { return 'current-vote'; }
+    return null;
+  };
 
   return (
     <div className="voter">
       <div className="vote-buttons">
         <button
-          className={!authorId ? 'no-user'
-            : ((currentUserVote > 0) ? 'current-vote' : '')}
-          disabled={!authorId ? true : false}
-          onClick={handleVote(1)}>
-            ▲
+          className={getButtonClass((currentUserVote > 0))}
+          disabled={!authorId}
+          onClick={handleVote(1)}
+        >
+          ▲
         </button>
         <span>{post.postVotes}</span>
         <button
-          className={!authorId ? 'no-user'
-            : ((currentUserVote < 0) ? 'current-vote' : '')}
-          disabled={!authorId ? true : false}
-          onClick={handleVote(-1)}>
-            ▼
+          className={getButtonClass((currentUserVote < 0))}
+          disabled={!authorId}
+          onClick={handleVote(-1)}
+        >
+          ▼
         </button>
       </div>
     </div>
-    )
-}
+  );
+};
 
 
 export default PostVoter;

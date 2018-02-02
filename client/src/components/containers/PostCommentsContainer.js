@@ -2,11 +2,11 @@ import { connect } from 'react-redux';
 import PostComments from '../PostComments';
 import * as actions from '../../redux/actions';
 
-const mapStateToProps = (state, ownProps) => ({
+const mapStateToProps = state => ({
   currentPost: state.currentPost,
 });
 
-const mapDispatchToProps = (dispatch) => ({
+const mapDispatchToProps = dispatch => ({
   onGetPostFromServer(post) {
     dispatch(actions.getPostFromServer(post));
   },

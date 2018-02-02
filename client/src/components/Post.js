@@ -10,7 +10,7 @@ const Post = ({
   currentUserVote,
 }) => {
   if (!post) {
-    return <div>Loading...</div>
+    return <div>Loading...</div>;
   }
   return (
     <div className="post">
@@ -22,7 +22,11 @@ const Post = ({
       <div>
         { post.url ?
           <div>
-            <a href={post.url} target="_blank" className={post.new ? 'post-title new' : 'post-title'}>
+            <a
+              href={post.url}
+              target="_blank"
+              className={post.new ? 'post-title new' : 'post-title'}
+            >
               {post.title}
             </a>
             <br />
@@ -39,19 +43,20 @@ const Post = ({
           </span> : null }
         {post.body ?
           <div className="post-body">
-            {commentsLink ?
-              ( post.body.length > 255 ?
-                post.body.slice(0, 255).concat('...') : post.body )
-              : post.body}
-            </div> : null}
+            {commentsLink && post.body.length > 255 ?
+              post.body.slice(0, 255).concat('...') : post.body}
+          </div> : null}
         {commentsLink ?
           <Link to={`/posts/${post.id}`}>
-            <div className="comment-count">{post.postComments ? post.postComments.length : '0'} comments</div>
+            <div className="comment-count">
+              {post.postComments ? post.postComments.length : '0'} comments
+            </div>
           </Link>
           : null }
       </div>
     </div>
-)}
+  );
+};
 
 
 export default Post;

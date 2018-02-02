@@ -1,13 +1,13 @@
 import { connect } from 'react-redux';
 import { withRouter } from 'react-router-dom';
 import NavBar from '../NavBar';
-import * as actions from '../../redux/actions.js';
+import * as actions from '../../redux/actions';
 
-const mapStateToProps = (state) => ({
+const mapStateToProps = state => ({
   currentUser: state.currentUser,
 });
 
-const mapDispatchToProps = (dispatch) => ({
+const mapDispatchToProps = dispatch => ({
   onGetUserFromServer(user) {
     dispatch(actions.getUserFromServer(user));
   },

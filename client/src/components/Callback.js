@@ -4,7 +4,6 @@ import { addUserToServer } from '../api/users';
 
 
 class Callback extends Component {
-
   componentDidMount() {
     setAccessToken();
     setIdToken();
@@ -13,7 +12,7 @@ class Callback extends Component {
     const user = getProfile();
     addUserToServer(user);
 
-    window.location.href = "/";
+    window.location.href = '/';
   }
 
   render() {

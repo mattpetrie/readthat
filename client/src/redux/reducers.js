@@ -9,7 +9,7 @@ const post = (state = {}, action) => {
         return {
           ...state,
           postVotes: state.postVotes + action.difference,
-        }
+        };
       }
       return state;
     case 'HANDLE_COMMENT_VOTE':
