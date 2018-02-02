@@ -1,6 +1,6 @@
 import { connect } from 'react-redux';
 import CommentVoter from '../CommentVoter';
-import * as actions from '../../redux/actions.js';
+import * as actions from '../../redux/actions';
 
 const mapStateToProps = (state, ownProps) => ({
   currentUserVote: !state.currentUser.commentVotes ? null :
@@ -12,7 +12,6 @@ const mapStateToProps = (state, ownProps) => ({
 
 const mapDispatchToProps = (dispatch) => ({
   handleCommentVoteInStore(vote, difference) {
-    console.log(vote, difference);
     dispatch(actions.handleCommentVote(vote, difference));
   }
 });

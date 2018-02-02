@@ -9,7 +9,6 @@ const CommentVoter = ({
   handleCommentVoteInStore
 }) => {
   const currentUserVoteValue = currentUserVote ? currentUserVote.vote : 0;
-  console.log(currentUserVoteValue);
 
   const handleVoteOnServer = (voteValue) => currentUserVote ?
     updateCommentVoteToServer(comment.postId, comment.id, authorId, voteValue)

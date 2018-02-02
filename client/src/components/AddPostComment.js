@@ -17,11 +17,12 @@ const AddPostComment = ({
         if (!body.value.trim()) {
           return;
         }
+        
         const postComment = {
           body: body.value,
-          authorId };
+          authorId
+        };
 
-        console.log(postComment);
         addPostCommentToServer(postId, postComment).then(res => {
           onAddPostComment(res);
         });

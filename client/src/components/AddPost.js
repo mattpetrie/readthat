@@ -16,13 +16,14 @@ const AddPost = ({
         if (!title.value.trim()) {
           return;
         }
+
         const post = {
           title: title.value,
           body: body.value,
           url: url.value,
-          authorId};
+          authorId
+        };
 
-        console.log(post);
         addPostToServer(post).then(res => {
           onAddPost(res);
         });

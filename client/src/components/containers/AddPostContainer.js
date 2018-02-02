@@ -1,13 +1,13 @@
 import { connect } from 'react-redux';
 import AddPost from '../AddPost';
-import * as actions from '../../redux/actions.js';
+import * as actions from '../../redux/actions';
 
-const mapStateToProps = (state) => ({
+const mapStateToProps = () => ({
 });
 
-const mapDispatchToProps = (dispatch) => ({
+const mapDispatchToProps = dispatch => ({
   onAddPost(post) {
-    dispatch(actions.addPost({...post, new: true}));
+    dispatch(actions.addPost({ ...post, new: true }));
   },
 });
 
